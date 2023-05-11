@@ -1,0 +1,50 @@
+#滚动条
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e58a8a;
+    background-image: -webkit-linear-gradient( 45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+::-moz-selection {
+    color: #fff;
+    background-color: #e58a8a;
+}
+#Mac样式代码框
+figure.highlight {
+    background: #21252b;
+    border-radius: 5px;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, .4);
+    padding-top: 30px
+}
+
+figure.highlight::before {
+    background: #fc625d;
+    border-radius: 50%;
+    box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+    content: ' ';
+    height: 12px;
+    left: 12px;
+    margin-top: -20px;
+    position: absolute;
+    width: 12px;
+}
+#表格
+.table-container {
+    overflow: auto;
+    margin-bottom: 16px;
+}
+
+/* Avoid affecting the style of codeblock */
+.markdown-body .table-container table {
+    display: table !important;
+    margin-bottom: 0 !important;
+}
