@@ -16,26 +16,29 @@
   <meta name="author" content="manic">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前期准备买了一个云服务器和两个域名 整体思路使用Gophish钓鱼平台，使用腾讯的邮件推送服务作为邮件服务器 腾讯邮件服务器的操作流程1、登录腾讯邮件推送服务，点击立即开始     2、点击新建     3、选择买的域名     4、点击验证     5、验证按照此链接完成就行 参考链接：邮件推送 身份验证和配置相关问题-常见问题-文档中心-腾讯云 (tencent.com) 6、点击发信地址配置">
+    <meta name="description" content="方法一使用工具：夜神模拟器安卓5版本、xposed、Fiddle、BP 情况一：可以设置代理，但使用xposed时，安卓7不能正常访问百度，安卓5可以访问（怀疑app的数据也受到了影响） 工具作用：使用 Xposed + JustTruestMe 来突破SSL。一旦 app 校验了证书的指纹信息。我们的证书不再受信任了。自然而然就无法建立连接，所以必须想办法让 app 信任，才能继续抓包。 整理思">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gophish">
-<meta property="og:url" content="http://example.com/2023/07/13/Gophish/index.html">
+<meta property="og:title" content="APP抓包">
+<meta property="og:url" content="http://example.com/2023/11/06/APP%E6%8A%93%E5%8C%85/index.html">
 <meta property="og:site_name" content="manic的小站">
-<meta property="og:description" content="前期准备买了一个云服务器和两个域名 整体思路使用Gophish钓鱼平台，使用腾讯的邮件推送服务作为邮件服务器 腾讯邮件服务器的操作流程1、登录腾讯邮件推送服务，点击立即开始     2、点击新建     3、选择买的域名     4、点击验证     5、验证按照此链接完成就行 参考链接：邮件推送 身份验证和配置相关问题-常见问题-文档中心-腾讯云 (tencent.com) 6、点击发信地址配置">
+<meta property="og:description" content="方法一使用工具：夜神模拟器安卓5版本、xposed、Fiddle、BP 情况一：可以设置代理，但使用xposed时，安卓7不能正常访问百度，安卓5可以访问（怀疑app的数据也受到了影响） 工具作用：使用 Xposed + JustTruestMe 来突破SSL。一旦 app 校验了证书的指纹信息。我们的证书不再受信任了。自然而然就无法建立连接，所以必须想办法让 app 信任，才能继续抓包。 整理思">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/%E5%B0%81%E9%9D%A2.png">
-<meta property="article:published_time" content="2023-07-13T07:58:41.000Z">
-<meta property="article:modified_time" content="2023-08-25T06:50:04.630Z">
+<meta property="article:published_time" content="2023-11-06T08:43:20.000Z">
+<meta property="article:modified_time" content="2023-11-06T09:13:31.699Z">
 <meta property="article:author" content="manic">
-<meta property="article:tag" content="钓鱼">
-<meta property="article:tag" content="GoPhish">
-<meta property="article:tag" content="腾讯邮件推送服务">
+<meta property="article:tag" content="APP">
+<meta property="article:tag" content="xposed">
+<meta property="article:tag" content="Fiddle">
+<meta property="article:tag" content="Postern">
+<meta property="article:tag" content="Charles">
+<meta property="article:tag" content="Burpsuite">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/%E5%B0%81%E9%9D%A2.png">
   
   
   
-  <title>Gophish - manic的小站</title>
+  <title>APP抓包 - manic的小站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Gophish"></span>
+            <span id="subtitle" data-typed-text="APP抓包"></span>
           
         </div>
 
@@ -233,8 +236,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-13 15:58" pubdate>
-          2023年7月13日 下午
+        <time datetime="2023-11-06 16:43" pubdate>
+          2023年11月6日 下午
         </time>
       </span>
     
@@ -245,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.2k 字
         
       </span>
     
@@ -256,7 +259,7 @@
         
         
         
-          12 分钟
+          10 分钟
         
       </span>
     
@@ -302,90 +305,89 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Gophish</h1>
+            <h1 style="display: none">APP抓包</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>买了一个云服务器和两个域名</p>
-<h3 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h3><p>使用Gophish钓鱼平台，使用腾讯的邮件推送服务作为邮件服务器</p>
-<h2 id="腾讯邮件服务器的操作流程"><a href="#腾讯邮件服务器的操作流程" class="headerlink" title="腾讯邮件服务器的操作流程"></a>腾讯邮件服务器的操作流程</h2><p>1、登录腾讯邮件推送服务，点击立即开始</p>
-  <img src="/2023/07/13/Gophish/%E8%85%BE%E8%AE%AF%E9%82%AE%E4%BB%B6%E6%8E%A8%E9%80%811.png" srcset="/img/loading.gif" lazyload class="" title="腾讯邮件推送">
+                <h1 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h1><p>使用工具：夜神模拟器安卓5版本、xposed、Fiddle、BP</p>
+<p>情况一：可以设置代理，但使用xposed时，安卓7不能正常访问百度，安卓5可以访问（怀疑app的数据也受到了影响）</p>
+<p>工具作用：使用 Xposed + JustTruestMe 来突破SSL。一旦 app 校验了证书的指纹信息。我们的证书不再受信任了。自然而然就无法建立连接，所以必须想办法让 app 信任，才能继续抓包。</p>
+<p>整理思路：模拟器安装xposed， JustTruestMe。设置代理转发到Fiddle，再转发到BP</p>
+<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、直接安卓夜深模拟器自带的xposed</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106142509941.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106142509941">
 
-<p>2、点击新建</p>
-  <img src="/2023/07/13/Gophish/%E8%85%BE%E8%AE%AF%E9%82%AE%E4%BB%B6%E6%8E%A8%E9%80%812.png" srcset="/img/loading.gif" lazyload class="" title="腾讯邮件推送">
+<p>2、安装</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106142804537.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106142804537">
 
-<p>3、选择买的域名</p>
-  <img src="/2023/07/13/Gophish/%E8%85%BE%E8%AE%AF%E9%82%AE%E4%BB%B6%E6%8E%A8%E9%80%813.png" srcset="/img/loading.gif" lazyload class="" title="腾讯邮件推送">
+<p>3、允许</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106142931240.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106142931240">
 
-<p>4、点击验证</p>
-  <img src="/2023/07/13/Gophish/%E8%85%BE%E8%AE%AF%E9%82%AE%E4%BB%B6%E6%8E%A8%E9%80%814.png" srcset="/img/loading.gif" lazyload class="" title="腾讯邮件推送">
+<p>4、等待重启（卡住的话手动重启）</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106143018555.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106143018555">
 
-<p>5、验证按照此链接完成就行</p>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/1288/60652">邮件推送 身份验证和配置相关问题-常见问题-文档中心-腾讯云 (tencent.com)</a></p>
-<p>6、点击发信地址配置。点击新建创建发信人和密码（随意创建）</p>
-  <img src="/2023/07/13/Gophish/%E8%85%BE%E8%AE%AF%E9%82%AE%E4%BB%B6%E6%8E%A8%E9%80%818.png" srcset="/img/loading.gif" lazyload class="" title="腾讯邮件推送">
+<p>5、安装完JustTruestMe后，找到xposed的模块，勾选上JustTruestMe</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106143242298.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106143242298">
 
+<p>6、Fiddle配置。工具-&gt;选项-&gt;连接，如下配置</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106143703331.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106143703331">
 
+<p>7、Fiddle配置。工具-&gt;选项-&gt;网关，如下配置</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106143823470.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106143823470">
 
+<p>8、配置模拟器代理，ip为物理机IP</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106145732311.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106145732311">
 
+<p>9、安装Fiddle证书。访问软件所在的物理IP和软件端口，点击下载安装</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106145148292.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106145148292">
 
-<h2 id="gophish操作流程"><a href="#gophish操作流程" class="headerlink" title="gophish操作流程"></a>gophish操作流程</h2><p>1、首先对sending profiles进行配置，发送人和用户名要一样，密码为上图中的SMTP密码</p>
- <img src="/2023/07/13/Gophish/gophish%E4%BD%BF%E7%94%A81.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>2、第二步对邮件内容进行配置</p>
- <img src="/2023/07/13/Gophish/gophish%E4%BD%BF%E7%94%A82-1.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>邮件模板内容</p>
- <img src="/2023/07/13/Gophish/image-20230706103946286.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>在模板内容中，跳转的连接使用.URL作为变量，<code>.URL</code>是官方提供的参数，是gophish监听的钓鱼网页链接。</p>
- <img src="/2023/07/13/Gophish/image-20230706112532319.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>3、第三步加载钓鱼页面，如果要记录密码就要勾选上Passwords。Redirect to是钓鱼页面的跳转页面</p>
- <img src="/2023/07/13/Gophish/gophish%E4%BD%BF%E7%94%A83-1.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>下图为钓鱼页面样式</p>
- <img src="/2023/07/13/Gophish/image-20230706104153836.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>下图为钓鱼页面点击提交后跳转页面内容</p>
- <img src="/2023/07/13/Gophish/image-20230706104707269.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>4、然后批量加载收件人</p>
- <img src="/2023/07/13/Gophish/gophish%E4%BD%BF%E7%94%A84.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>5、最后发送，url为监听地址，这里的URL填写配置文档中对应的第二个地址。</p>
- <img src="/2023/07/13/Gophish/gophish%E4%BD%BF%E7%94%A85-1.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
+<p>10、打开BP，就可以抓包了，修改一下BP的端口为8081</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106150719726.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106150719726">
 
 
 
-<h4 id="大概流程就是以上那些，下面是遇到问题"><a href="#大概流程就是以上那些，下面是遇到问题" class="headerlink" title="大概流程就是以上那些，下面是遇到问题"></a>大概流程就是以上那些，下面是遇到问题</h4><p>后面客户要求钓鱼页面使用他们公司内部的网站，然后我们尝试直接copy要钓鱼的页面。</p>
- <img src="/2023/07/13/Gophish/image-20230707145236063.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>在此次项目中，因为客户的页面在内网，钓鱼平台在外网，所以无法直接copy页面；直接copy页面的源代码出现没有样式，排版很乱等问题。</p>
-<p>然后使用火狐插件 Save Page WE下载地址：<a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/save-page-we/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search%E3%80%82">https://addons.mozilla.org/zh-CN/firefox/addon/save-page-we/?utm_source=addons.mozilla.org&amp;utm_medium=referral&amp;utm_content=search。</a>  使用插件来copy页面，样式可以完美copy。但是又出现了新问题，input标签不能编辑，最后是class的问题，删除了对应的class。</p>
-<p><strong>就以为一切都结束了，又出现了新的问题，加载图片的功能不能用了，无法记录谁打开过邮件。</strong></p>
-<p>这里有一个小坑，如果在gophish的<code>config.json</code>中<code>phish_server</code>设置<code>use_tls</code>为<code>false</code>，即监听的钓鱼网页不启用https的，在某些邮件服务器打开邮件的时候，应该请求http，但是自动跳转的是https，并且有概率会请求失败，这就导致数据统计有一定的不准确性。参考链接：<a target="_blank" rel="noopener" href="https://toutiao.io/posts/htszx7d/preview">https://toutiao.io/posts/htszx7d/preview</a></p>
- <img src="/2023/07/13/Gophish/gophish%E4%BD%BF%E7%94%A86.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>所以在配置文件中把use_tls设置为true。</p>
- <img src="/2023/07/13/Gophish/gophish%E4%BD%BF%E7%94%A87.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
-
-<p>配置文件修改内容</p>
- <img src="/2023/07/13/Gophish/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230710090350.png" srcset="/img/loading.gif" lazyload class="" title="gophish使用">
 
 
 
-<p><strong>做项目时出现的问题：</strong></p>
-<p>邮件标题问题导致用户接收不到邮件，到底是为什么不太清楚</p>
-<p>发送延迟问题，怀疑是用户组使用了中文或者平台问题</p>
-<p>copy的客户网站页面，用户名和密码不能编辑，原因是对应的class，注释到就可以了</p>
-<p>如果想要记录谁打开了邮件，就要使用https协议，问题会有两个：</p>
-<p>​		1.收到邮件打开后，点击链接跳转不过去。可能会被受害者那边的安全策略拦截掉。</p>
-<p>​		2.https没有证书，受害者点击链接能够跳转过去的话，也会给安全告警提示。·</p>
-<p><strong>参考链接：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11898#toc-0">企业级钓鱼演练平台搭建 - 先知社区 (aliyun.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/540029594">宸极实验室——『工具使用』钓鱼平台 Gophish - 知乎 (zhihu.com)</a></p>
+
+
+
+
+
+<h1 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h1><p>情况二：1、有的apk不能在安卓5上运行，只能在安卓7以上运行。2、设置代理抓不到包（不能完全解决此问题，有的软件还是不能正常访问所有功能点）</p>
+<p>使用工具： 夜神模拟器安卓7版本，Postern + Charles + Burpsuite</p>
+<p>工具作用：App 为了防止中间人抓包，特意设置了不走代理这个选项。通过 VPN 将所有流量转发到 Charles 的 socks 代理，再打开 Charles 的 External Proxy Server — （外部代理服务器）转发到 Burpsuite</p>
+<p>整体思路：模拟器安装Postern。开启VPN转到 Charles，再转发到BP</p>
+<h2 id="操作流程-1"><a href="#操作流程-1" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、激活Charles地址：<a target="_blank" rel="noopener" href="https://www.zzzmode.com/mytools/charles/%E3%80%82%E5%9C%A8%E8%BF%99%E4%B8%AA%E4%BD%8D%E7%BD%AE%E6%BF%80%E6%B4%BB%EF%BC%8C%E6%AD%A4%E5%9B%BE%E4%B8%BA%E6%BF%80%E6%B4%BB%E5%AE%8C%E7%9A%84">https://www.zzzmode.com/mytools/charles/。在这个位置激活，此图为激活完的</a></p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106152549650.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106152549650">
+
+<p>2、Windows proxy没有勾选，因为我不抓PC的数据</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106152915049.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106152915049">
+
+<p>3、点击proxy setting，如此配置</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106153109788.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106153109788">
+
+<p>4、浏览器访问<a target="_blank" rel="noopener" href="http://chls.pro/ssl%EF%BC%8C%E5%B0%B1%E4%BC%9A%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%EF%BC%8C">http://chls.pro/ssl，就会下载证书，</a></p>
+<p>问题：因为打开了external proxy settings,所以下载不到证书，会报错。关掉。</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106155151403.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106155151403">
+
+<p>5、postern中如下配置，名称随便，IP为物理机IP，端口和代理类型和Charles相同</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106155853897.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106155853897">
+
+<p>6、postern中如下配置</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106160103635.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106160103635">
+
+<p>7、打开关闭VPN</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106160148061.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106160148061">
+
+<p>8、Charles数据转到BP配置</p>
+<img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106160328654.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106160328654">
+
+
+
+<p>注：安装一个软件后，请多尝试。eg:A软件首次打开后，后打开代理就无法抓包。在首次打开软件的前打开代理，软件就可以抓包，这是为啥？？？</p>
+<h3 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/MKwYYjcHiiHNzT4RzRuBZg">微信公众平台 (qq.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/holyxp/article/details/131768201">Postern + Charles + Burpsuite 进行对 APP 进行抓包_postern 抓包-CSDN博客</a></p>
 
                 
               </div>
@@ -404,7 +406,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AE%9E%E8%B7%B5%E7%BB%8F%E5%8E%86/" class="category-chain-item">实践经历</a>
+  <a href="/categories/APP%E6%8A%93%E5%8C%85/" class="category-chain-item">APP抓包</a>
   
   
 
@@ -419,11 +421,17 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%92%93%E9%B1%BC/">#钓鱼</a>
+        <a href="/tags/APP/">#APP</a>
       
-        <a href="/tags/GoPhish/">#GoPhish</a>
+        <a href="/tags/xposed/">#xposed</a>
       
-        <a href="/tags/%E8%85%BE%E8%AE%AF%E9%82%AE%E4%BB%B6%E6%8E%A8%E9%80%81%E6%9C%8D%E5%8A%A1/">#腾讯邮件推送服务</a>
+        <a href="/tags/Fiddle/">#Fiddle</a>
+      
+        <a href="/tags/Postern/">#Postern</a>
+      
+        <a href="/tags/Charles/">#Charles</a>
+      
+        <a href="/tags/Burpsuite/">#Burpsuite</a>
       
     </div>
   
@@ -435,8 +443,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Gophish</div>
-      <div>http://example.com/2023/07/13/Gophish/</div>
+      <div>APP抓包</div>
+      <div>http://example.com/2023/11/06/APP抓包/</div>
     </div>
     <div class="license-meta">
       
@@ -448,7 +456,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月13日</div>
+          <div>2023年11月6日</div>
         </div>
       
       
@@ -480,18 +488,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/06/APP%E6%8A%93%E5%8C%85/" title="APP抓包">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">APP抓包</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/05/%E5%85%B1%E6%A8%A1%E6%94%BB%E5%87%BB/" title="共模攻击">
-                        <span class="hidden-mobile">共模攻击</span>
+                      <a href="/2023/07/13/Gophish/" title="Gophish">
+                        <span class="hidden-mobile">Gophish</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
