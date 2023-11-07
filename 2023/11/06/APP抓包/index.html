@@ -16,16 +16,16 @@
   <meta name="author" content="manic">
   <meta name="keywords" content="">
   
-    <meta name="description" content="方法一使用工具：夜神模拟器安卓5版本、xposed、Fiddle、BP 情况一：可以设置代理，但使用xposed时，安卓7不能正常访问百度，安卓5可以访问（怀疑app的数据也受到了影响） 工具作用：使用 Xposed + JustTruestMe 来突破SSL。一旦 app 校验了证书的指纹信息。我们的证书不再受信任了。自然而然就无法建立连接，所以必须想办法让 app 信任，才能继续抓包。 整理思">
+    <meta name="description" content="方法一使用工具：夜神模拟器安卓5版本、xposed、Fiddle、BP 情况一：可以设置代理，但使用xposed时，安卓7不能正常访问百度，安卓5可以访问（怀疑app的数据也受到了影响） 工具作用：使用 Xposed + JustTruestMe 来突破SSL。一旦 app 校验了证书的指纹信息。我们的证书不再受信任了。自然而然就无法建立连接，所以必须想办法让 app 信任，才能继续抓包。 整体思">
 <meta property="og:type" content="article">
 <meta property="og:title" content="APP抓包">
 <meta property="og:url" content="http://example.com/2023/11/06/APP%E6%8A%93%E5%8C%85/index.html">
 <meta property="og:site_name" content="manic的小站">
-<meta property="og:description" content="方法一使用工具：夜神模拟器安卓5版本、xposed、Fiddle、BP 情况一：可以设置代理，但使用xposed时，安卓7不能正常访问百度，安卓5可以访问（怀疑app的数据也受到了影响） 工具作用：使用 Xposed + JustTruestMe 来突破SSL。一旦 app 校验了证书的指纹信息。我们的证书不再受信任了。自然而然就无法建立连接，所以必须想办法让 app 信任，才能继续抓包。 整理思">
+<meta property="og:description" content="方法一使用工具：夜神模拟器安卓5版本、xposed、Fiddle、BP 情况一：可以设置代理，但使用xposed时，安卓7不能正常访问百度，安卓5可以访问（怀疑app的数据也受到了影响） 工具作用：使用 Xposed + JustTruestMe 来突破SSL。一旦 app 校验了证书的指纹信息。我们的证书不再受信任了。自然而然就无法建立连接，所以必须想办法让 app 信任，才能继续抓包。 整体思">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/%E5%B0%81%E9%9D%A2.png">
 <meta property="article:published_time" content="2023-11-06T08:43:20.000Z">
-<meta property="article:modified_time" content="2023-11-06T09:13:31.699Z">
+<meta property="article:modified_time" content="2023-11-07T07:16:33.855Z">
 <meta property="article:author" content="manic">
 <meta property="article:tag" content="APP">
 <meta property="article:tag" content="xposed">
@@ -259,7 +259,7 @@
         
         
         
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -313,8 +313,8 @@
                 <h1 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h1><p>使用工具：夜神模拟器安卓5版本、xposed、Fiddle、BP</p>
 <p>情况一：可以设置代理，但使用xposed时，安卓7不能正常访问百度，安卓5可以访问（怀疑app的数据也受到了影响）</p>
 <p>工具作用：使用 Xposed + JustTruestMe 来突破SSL。一旦 app 校验了证书的指纹信息。我们的证书不再受信任了。自然而然就无法建立连接，所以必须想办法让 app 信任，才能继续抓包。</p>
-<p>整理思路：模拟器安装xposed， JustTruestMe。设置代理转发到Fiddle，再转发到BP</p>
-<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、直接安卓夜深模拟器自带的xposed</p>
+<p>整体思路：模拟器安装xposed， JustTruestMe。设置代理转发到Fiddle，再转发到BP</p>
+<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、直接安装夜神模拟器自带的xposed</p>
 <img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106142509941.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106142509941">
 
 <p>2、安装</p>
@@ -367,11 +367,11 @@
 <p>3、点击proxy setting，如此配置</p>
 <img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106153109788.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106153109788">
 
-<p>4、浏览器访问<a target="_blank" rel="noopener" href="http://chls.pro/ssl%EF%BC%8C%E5%B0%B1%E4%BC%9A%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%EF%BC%8C">http://chls.pro/ssl，就会下载证书，</a></p>
+<p>4、配置模拟器代理，ip为物理机IP，端口为8888。浏览器访问<a target="_blank" rel="noopener" href="http://chls.pro/ssl%EF%BC%8C%E5%B0%B1%E4%BC%9A%E4%B8%8B%E8%BD%BD%E8%AF%81%E4%B9%A6%EF%BC%8C">http://chls.pro/ssl，就会下载证书，</a></p>
 <p>问题：因为打开了external proxy settings,所以下载不到证书，会报错。关掉。</p>
 <img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106155151403.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106155151403">
 
-<p>5、postern中如下配置，名称随便，IP为物理机IP，端口和代理类型和Charles相同</p>
+<p>5、下载完证书后关掉代理。postern中如下配置，名称随便，IP为物理机IP，端口和代理类型和Charles相同</p>
 <img src="/2023/11/06/APP%E6%8A%93%E5%8C%85/image-20231106155853897.png" srcset="/img/loading.gif" lazyload class="" title="image-20231106155853897">
 
 <p>6、postern中如下配置</p>
