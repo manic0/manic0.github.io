@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>proxypin使用</title>
+    <link href="/2025/05/06/proxypin%E4%BD%BF%E7%94%A8/"/>
+    <url>/2025/05/06/proxypin%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<p>使用proxypin工具</p><p><a href="https://github.com/wanghongenpin/proxypin">https://github.com/wanghongenpin/proxypin</a></p><h6 id="安装到手机上以后的操作"><a href="#安装到手机上以后的操作" class="headerlink" title="安装到手机上以后的操作"></a>安装到手机上以后的操作</h6><p>首页有一个应用白名单</p><img src="/img/proxypin使用/image-20250506150600858.png" alt="image-20250506150600858" style="zoom:50%;" /><p>默认不开启，点一下开启，添加软件，只抓某一个的数据包</p><img src="/img/proxypin使用/image-20250506151405876.png" alt="image-20250506151405876" style="zoom:50%;" /><p>我的-&gt;HTTPS代理-&gt;启用HTTPS代理</p><img src="/img/proxypin使用/image-20250506150200903.png" alt="image-20250506150200903" style="zoom: 33%;" /><p>点击安装根证书，将证书通过MT管理器传入到&#x2F;data&#x2F;adb&#x2F;modules&#x2F;MoveCertificate&#x2F;certficates&#x2F;路径下，权限由777改到644，重启手机</p><img src="/img/proxypin使用/image-20250416155351870.png" alt="image-20250416155351870" style="zoom: 67%;" /><img src="/img/proxypin使用/image-20250416155004433.png" alt="image-20250416155004433" style="zoom: 33%;" /><p>在设置中点击外部代理设置，默认是未启用的，需要开启，后配置局域网内<code>yakit</code>监听的IP端口</p><img src="/img/proxypin使用/image-20250416155535706.png" alt="image-20250416155535706" style="zoom:67%;" /><p><img src="/img/proxypin%E4%BD%BF%E7%94%A8/image-20250416155717621.png" alt="image-20250416155717621"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>APP抓包</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>proxypin</tag>
+      
+      <tag>wx</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>apache-flink-unauth-rce-不出网上线msf</title>
     <link href="/2025/04/28/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/"/>
     <url>/2025/04/28/apache-flink-unauth-rce-%E4%B8%8D%E5%87%BA%E7%BD%91%E4%B8%8A%E7%BA%BFmsf/</url>
