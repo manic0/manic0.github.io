@@ -1,28 +1,24 @@
+document.addEventListener("DOMContentLoaded", function () {
 
-var  newDiv  =  document.createElement("div");
+    // 查找统计信息区域
+    const statistics = document.querySelector(".statistics");
 
-newDiv.innerHTML  =  `
-
-      <span id="time"></span>
-
-      <script src="/js/time.js"></script>
-
-      `;
-
-document.addEventListener("DOMContentLoaded", function() {
-
- var  div1  =  document.getElementsByClassName("statistics")[0];
-
- var  div2  =  document.getElementsByClassName("beian")[0];
-
- /*调试检查*/
- console.log(div1); 
- console.log(div2);  
- 
- if (div1  &&  div2) {
-
- div1.parentNode.insertBefore(newDiv, div2);
-
+    if (!statistics) {
+        console.warn("未找到 .statistics 元素");
+        return;
     }
+
+    // 防止重复插入
+    if (document.getElementById("time")) {
+        return;
+    }
+
+    // 创建运行时间容器
+    const newDiv = document.createElement("div");
+    newDiv.style.marginTop = "8px";
+    newDiv.innerHTML = '<span id="time"></span>';
+
+    // 插入到统计信息后面
+    statistics.after(newDiv);
 
 });

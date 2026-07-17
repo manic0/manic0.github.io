@@ -1,13 +1,54 @@
-var  now  =  new  Date();
-function  createtime() {
- var  grt=  new  Date("07/23/2024 16:37:00");
- now.setTime(now.getTime()+250);
- days  = (now  -  grt ) /  1000  /  60  /  60  /  24; dnum  =  Math.floor(days);
- hours  = (now  -  grt ) /  1000  /  60  /  60  - (24  *  dnum); hnum  =  Math.floor(hours);
- if(String(hnum).length  ==1 ){hnum  =  "0"  +  hnum;} minutes  = (now  -  grt ) /  1000  /60  - (24  *  60  *  dnum) - (60  *  hnum);
- mnum  =  Math.floor(minutes); if(String(mnum).length  ==1 ){mnum  =  "0"  +  mnum;}
- seconds  = (now  -  grt ) /  1000  - (24  *  60  *  60  *  dnum) - (60  *  60  *  hnum) - (60  *  mnum);
- snum  =  Math.round(seconds); if(String(snum).length  ==1 ){snum  =  "0"  +  snum;}
- document.getElementById("time").innerHTML  =  "本站已安全运行 "+  dnum+" 天 "+  hnum  +  " 小时 "  +  mnum  +  " 分 "  +  snum  +  " 秒";
-}
-setInterval("createtime()",250);
+document.addEventListener("DOMContentLoaded", function () {
+
+    // 网站建立时间
+    const grt = new Date("2024-07-23T16:37:00");
+
+    function createtime() {
+
+        const time = document.getElementById("time");
+
+        // time 元素还没插入，直接退出
+        if (!time) {
+            return;
+        }
+
+        const now = new Date();
+
+        const diff = now - grt;
+
+        const dnum = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        const hnum = Math.floor(
+            (diff % (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
+
+        const mnum = Math.floor(
+            (diff % (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+        const snum = Math.floor(
+            (diff % (1000 * 60)) /
+            1000
+        );
+
+        time.innerHTML =
+            "本站已安全运行 " +
+            dnum +
+            " 天 " +
+            String(hnum).padStart(2, "0") +
+            " 小时 " +
+            String(mnum).padStart(2, "0") +
+            " 分 " +
+            String(snum).padStart(2, "0") +
+            " 秒";
+    }
+
+    // 先执行一次
+    createtime();
+
+    // 每秒刷新一次
+    setInterval(createtime, 1000);
+
+});
