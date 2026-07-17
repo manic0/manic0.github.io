@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // 网站建立时间
-    const grt = new Date("2024-07-23T16:37:00");
+    const grt = new Date("2023-05-05T16:37:00");
 
     function createtime() {
 
