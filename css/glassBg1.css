@@ -1,0 +1,172 @@
+/* ===========================================================
+ * Hexo Fluid 毛玻璃（支持日夜主题自动切换）
+ * =========================================================== */
+
+
+/* ==========================
+ * 主面板
+ * ========================== */
+
+#board{
+
+    /* 使用 fluid-extension.css 中定义的变量 */
+    background: var(--board-bg) !important;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-radius:20px;
+
+    border:1px solid var(--border-color);
+
+    box-shadow:0 8px 32px rgba(31,38,135,.18);
+
+    transition:
+        background .35s,
+        border-color .35s,
+        box-shadow .35s;
+
+}
+
+
+/* ==========================
+ * 目录
+ * ========================== */
+
+#toc{
+
+    padding:10px;
+
+    top:4rem;
+
+    background:var(--card-bg);
+
+    border-radius:12px;
+
+    border:1px solid var(--border-color);
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+
+    transition:
+        background .35s,
+        border-color .35s,
+        box-shadow .35s;
+
+}
+
+
+/* ==========================
+ * 首页文章卡片
+ * ========================== */
+
+.index-card{
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border-color);
+
+    border-radius:18px;
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+
+    transition:
+        background .35s,
+        border-color .35s,
+        box-shadow .35s,
+        transform .25s;
+
+}
+
+
+/* 鼠标悬停 */
+
+.index-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+}
+
+
+/* ==========================
+ * 搜索框
+ * ========================== */
+
+#local-search-result,
+
+.search-dialog{
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border-color);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+}
+
+
+/* ==========================
+ * 分页
+ * ========================== */
+
+.pagination .page-link{
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border-color);
+
+    color:var(--text-main);
+
+    backdrop-filter:blur(12px);
+
+}
+
+
+/* ==========================
+ * 返回顶部
+ * ========================== */
+
+#scroll-top-button{
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+
+}
+
+
+/* ==========================
+ * 夜间模式阴影加强
+ * ========================== */
+
+html[data-user-color-scheme="dark"] #board{
+
+    box-shadow:
+        0 8px 35px rgba(0,0,0,.45);
+
+}
+
+
+html[data-user-color-scheme="dark"] .index-card{
+
+    box-shadow:
+        0 6px 25px rgba(0,0,0,.35);
+
+}
+
+
+html[data-user-color-scheme="dark"] #toc{
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,.35);
+
+}

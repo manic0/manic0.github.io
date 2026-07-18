@@ -1,4 +1,5 @@
-#board{
+/* 白天 */
+#board {
     background: rgba(255,255,255,.45) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -6,15 +7,19 @@
     border-radius: 20px;
     border: 1px solid rgba(255,255,255,.25);
 
-    box-shadow:
-        0 8px 32px rgba(31,38,135,.18);
+    box-shadow: 0 8px 32px rgba(31,38,135,.18);
 }
 
-#toc {
-  padding: 10px;
-  top: 4rem;
-  background-color: var(--board-bg-color);
-  border-radius: 10px;
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
+/* 夜间 */
+html[data-user-color-scheme="dark"] #board{
+    background: rgba(18,18,18,.65) !important;
+    border: 1px solid rgba(255,255,255,.08);
+}
+#toc{
+    background: rgba(255,255,255,.35);
+    backdrop-filter: blur(15px);
+}
+
+html[data-user-color-scheme="dark"] #toc{
+    background: rgba(18,18,18,.55);
 }

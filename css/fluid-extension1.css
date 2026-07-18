@@ -1,0 +1,342 @@
+/* ===========================================================
+ * Fluid Extension CSS
+ * 保留原有样式 + 日夜主题自动切换
+ * =========================================================== */
+
+
+/* ===========================================================
+ * 滚动条
+ * =========================================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e58a8a;
+    background-image: -webkit-linear-gradient(
+        45deg,
+        rgba(255,255,255,.4) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255,255,255,.4) 50%,
+        rgba(255,255,255,.4) 75%,
+        transparent 75%,
+        transparent
+    );
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+::-moz-selection {
+    color: #fff;
+    background-color: #e58a8a;
+}
+
+::selection {
+    color: #fff;
+    background-color: #e58a8a;
+}
+
+
+/* ===========================================================
+ * Mac 样式代码框
+ * =========================================================== */
+
+figure.highlight {
+    background: #21252b;
+    border-radius: 8px;
+    box-shadow: 0 4px 7px rgba(0,0,0,.4);
+    padding-top: 30px;
+    overflow: hidden;
+}
+
+figure.highlight::before {
+    background: #fc625d;
+    border-radius: 50%;
+    box-shadow:
+        20px 0 #fdbc40,
+        40px 0 #35cd4b;
+    content: "";
+    height: 12px;
+    left: 12px;
+    margin-top: -20px;
+    position: absolute;
+    width: 12px;
+}
+
+
+/* ===========================================================
+ * 表格
+ * =========================================================== */
+
+.table-container {
+    overflow: auto;
+    margin-bottom: 16px;
+}
+
+.markdown-body .table-container table {
+    display: table !important;
+    margin-bottom: 0 !important;
+}
+
+
+/* ===========================================================
+ *                日夜主题颜色变量
+ * =========================================================== */
+
+/**********************
+ * 白天模式
+ **********************/
+
+html[data-user-color-scheme="light"]{
+
+    --board-bg:rgba(255,255,255,.58);
+
+    --card-bg:rgba(255,255,255,.52);
+
+    --text-main:#2C3E50;
+
+    --text-second:#5D6D7E;
+
+    --title-color:#1F2D3D;
+
+    --link-color:#409EFF;
+
+    --link-hover:#1976D2;
+
+    --border-color:rgba(0,0,0,.08);
+
+    --text-shadow:
+        0 1px 2px rgba(255,255,255,.55);
+
+}
+
+
+/**********************
+ * 夜间模式
+ **********************/
+
+html[data-user-color-scheme="dark"]{
+
+    --board-bg:rgba(20,20,20,.58);
+
+    --card-bg:rgba(25,25,25,.52);
+
+    --text-main:#ECECEC;
+
+    --text-second:#D0D0D0;
+
+    --title-color:#FFFFFF;
+
+    --link-color:#7DBBFF;
+
+    --link-hover:#A7D2FF;
+
+    --border-color:rgba(255,255,255,.08);
+
+    --text-shadow:
+        0 1px 3px rgba(0,0,0,.65);
+
+}
+
+
+/* ===========================================================
+ * 页面正文
+ * =========================================================== */
+
+body{
+
+    color:var(--text-main);
+
+}
+
+
+/* 主面板 */
+
+#board{
+
+    color:var(--text-main);
+
+    background:var(--board-bg);
+
+    border:1px solid var(--border-color);
+
+}
+
+
+/* ===========================================================
+ * Markdown
+ * =========================================================== */
+
+.markdown-body{
+
+    color:var(--text-main);
+
+    text-shadow:var(--text-shadow);
+
+}
+
+.markdown-body p{
+
+    color:var(--text-main);
+
+}
+
+.markdown-body li{
+
+    color:var(--text-main);
+
+}
+
+.markdown-body strong{
+
+    color:var(--title-color);
+
+}
+
+.markdown-body em{
+
+    color:var(--text-main);
+
+}
+
+.markdown-body blockquote{
+
+    color:var(--text-second);
+
+}
+
+.markdown-body hr{
+
+    border-color:var(--border-color);
+
+}
+
+
+/* ===========================================================
+ * 标题
+ * =========================================================== */
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6,
+
+.post-title,
+
+.archive-title{
+
+    color:var(--title-color);
+
+}
+
+
+/* ===========================================================
+ * 链接
+ * =========================================================== */
+
+a{
+
+    color:var(--link-color);
+
+    transition:.3s;
+
+}
+
+a:hover{
+
+    color:var(--link-hover);
+
+}
+
+
+/* ===========================================================
+ * 首页文章卡片
+ * =========================================================== */
+
+.index-card{
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border-color);
+
+}
+
+
+/* ===========================================================
+ * TOC目录
+ * =========================================================== */
+
+#toc{
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border-color);
+
+}
+
+#toc a{
+
+    color:var(--text-main);
+
+}
+
+#toc a:hover{
+
+    color:var(--link-hover);
+
+}
+
+
+/* ===========================================================
+ * 表格颜色
+ * =========================================================== */
+
+.markdown-body table{
+
+    color:var(--text-main);
+
+}
+
+.markdown-body th{
+
+    color:var(--title-color);
+
+}
+
+
+/* ===========================================================
+ * 平滑切换动画
+ * =========================================================== */
+
+body,
+#board,
+.markdown-body,
+.index-card,
+#toc,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+blockquote,
+strong,
+a{
+
+    transition:
+        color .35s,
+        background .35s,
+        border-color .35s,
+        box-shadow .35s;
+
+}
